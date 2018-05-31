@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\User;
 
 class PropertyController extends Controller
 {
@@ -13,9 +15,14 @@ class PropertyController extends Controller
      */
     public function index()
     {   
-        $data = Property::all();
+        $data = DB::table('properties')->get();
 
-        return view('property.index', $data);
+        /*foreach ($users as $user)
+        {
+            var_dump($user->name);
+        }*/
+
+       return view('property.index', $data);
     }
 
     /**
